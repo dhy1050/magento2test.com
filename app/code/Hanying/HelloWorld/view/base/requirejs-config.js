@@ -1,7 +1,7 @@
 var config = {
 	path:{
-		'hello': "Hanying_HelloWorld/jstest"
+		"hello": "Hanying_HelloWorld/jstest"
 	}
 };
 
-alert("dong done");
+alert("loaded done");

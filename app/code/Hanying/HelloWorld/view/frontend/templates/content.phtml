@@ -9,14 +9,9 @@
 <h4><?php echo $this->escapeHtml($this->getName()); ?></h4>
 
 <script type="text/javascript">
-	var config = {
-		path:{
-			'hello': "Hanying_HelloWorld/jstest"
-		}
-	};
-
-	requirejs(['jstest'], function(jstest) {
+	requirejs(['Hanying_HelloWord/jstest'], function(jstest) {
 		alert("using js !!");
+		console.log(jstest);
 	});
-	// alert("goes here");
+	alert("goes here");
 </script>
