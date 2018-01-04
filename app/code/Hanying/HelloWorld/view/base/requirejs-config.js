@@ -1,7 +1,8 @@
 var config = {
-	path:{
-		"hello": "Hanying_HelloWorld/jstest"
+	paths:{
+		"hello": "Hanying_HelloWorld/jstest",
+		"myjs" : "Hanying_HelloWorld/js/myjs"
 	}
 };
 
-alert("loaded done");
+alert("loaded requirejs-config");

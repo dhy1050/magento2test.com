@@ -1,4 +1,4 @@
 define([], function() {
-    alert("a js has been used");
+    alert("jstest has been used");
     return {};
 });

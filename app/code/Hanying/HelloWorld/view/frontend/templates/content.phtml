@@ -1,5 +1,5 @@
-<h1>helo man!!</h1>
-<h2><?php echo $this->escapeHtml($this->getMessage()); ?></h2>
+<h1 id="h1" class="htest">helo man!!</h1>
+<h2 class="htest"><?php echo $this->escapeHtml($this->getMessage()); ?></h2>
 <h3>
 	<?php 
 		echo $this->escapeHtml($this->getTest()); 
@@ -8,10 +8,13 @@
 
 <h4><?php echo $this->escapeHtml($this->getName()); ?></h4>
 
-<script type="text/javascript">
-	requirejs(['Hanying_HelloWord/jstest'], function(jstest) {
-		alert("using js !!");
-		console.log(jstest);
-	});
-	alert("goes here");
+<script type="text/x-magento-init">
+	{
+		".htest": {
+			"myjs" : {
+				"a":"testing this value",
+				"b":"b is tesging too"
+			}
+		}
+	}
 </script>
