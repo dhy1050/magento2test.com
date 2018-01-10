@@ -1,0 +1,47 @@
+<h1>in productContent.phtml now</h1>
+
+<p>
+<?php 
+$collections = $block->getProductCollect();
+foreach($collections as $product) {
+	print_r($product->getData("id"));
+	print_r($product->getData("name"));
+	print_r($product->getData());
+	echo "<br>";
+	echo "<br>";
+	echo "<br>";
+}
+
+echo count($collections);
+echo "<br>";
+echo "<br>";
+$stockInfo = $block->getProductQty()->getIsInStock();
+echo $stockInfo;
+
+echo "<br>";
+echo "<br>";
+echo "<br>";
+
+echo "get all product from category by Id";
+echo "<br>";
+$categoryProducts = $block->getCategoryProducts(5);
+
+
+foreach($categoryProducts as $product) {
+	print_r($product->getData("id"));
+	print_r($product->getData("name"));
+	
+	echo "<br>";
+	echo "<br>";
+	echo "<br>";
+}
+
+
+echo count($categoryProducts);
+
+?>
+	
+
+
+
+</p>

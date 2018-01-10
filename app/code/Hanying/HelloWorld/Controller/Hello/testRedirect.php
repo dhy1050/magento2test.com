@@ -7,7 +7,7 @@ class testRedirect extends Action
 	public function execute() 
 	{
 		echo "you came here for on moment!!!";
-		$this->_redirect("*/*/ssssworld");
+		$this->_redirect("*/*/world");
 	}
 	
 }
