@@ -1,31 +1,35 @@
 <?php
 namespace Hanying\HelloWorld\Block;
-
+     
 use Magento\Framework\View\Element\Template;
-
+use Hanying\HelloWorld\Helper\Data;
+      
 class Product extends Template
 {    
     protected $productCollect;
     protected $productStock;
     protected $_categoryFactory;
-
+    protected $_helperData;
+     
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,        
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         \Magento\CatalogInventory\Model\Stock\StockItemRepository $stockItemRepository,  
-        \Magento\Catalog\Model\CategoryFactory $categoryFactory,      
+        \Magento\Catalog\Model\CategoryFactory $categoryFactory,   
+        Data $helperData,   
         array $data = []
     )
     {
         $this->productCollect = $productCollectionFactory;   
         $this->productStock = $stockItemRepository; 
         $this->_categoryFactory = $categoryFactory;
-
+        $this->_helperData = $helperData;
         parent::__construct($context, $data);
     }
 
     public function getProductCollect()
     {
+        // $this->_helperData::$isOverride = true;
     	$collection = $this->productCollect->create();
 
         $collection->addAttributeToSelect('*')->load();
@@ -33,10 +37,14 @@ class Product extends Template
         return $collection;
     }
 
-    public function getProductQty()
-    {
-        return $this->productStock->get(8);
-    }
+    /*
+    to get product quty 
+    
+    */
+    // public function getProductQty()
+    // {
+    //     return $this->productStock->get();
+    // }
 
     public function getCategory($categoryId)
     {
@@ -66,6 +74,16 @@ class Product extends Template
         $collection->setPageSize(3); // selecting only 3 products
 
         return $collection;
+    }
+
+    public function addCategoriesToProduct($product, $categoryId)
+    {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+        $categoryLinkManagement = $objectManager->get('\Magento\Catalog\Api\CategoryLinkManagementInterface');
+
+        $categoryLinkManagement->assignProductToCategories($product, $categoryId);
+
     }
 
   
