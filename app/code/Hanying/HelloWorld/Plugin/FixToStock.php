@@ -2,14 +2,14 @@
 namespace Hanying\HelloWorld\Plugin;
 
 use Hanying\HelloWorld\Helper\Data;
+use Magento\CatalogInventory\Helper\Stock;
 
-class FixToStock extends \Magento\CatalogInventory\Helper\Stock
+class FixToStock extends Stock
 {
-	public function aroundAddIsInStockFilterToCollection($subject, $proced, $collection)
+	public function aroundAddIsInStockFilterToCollection($subject, $procede, $collection)
     {
-        // Data::$isOverride = false;
 
-        if(true ) {
+        if(true === Data::$isOverride) {
             $stockFlag = 'has_stock_status_filter';
             if (!$collection->hasFlag($stockFlag)) {
                 $isShowOutOfStock = true;
@@ -23,7 +23,8 @@ class FixToStock extends \Magento\CatalogInventory\Helper\Stock
             }
             Data::$isOverride = false;
         } else {
-            return $proced;
+            
+            return $procede($collection);
         }
     }
 }

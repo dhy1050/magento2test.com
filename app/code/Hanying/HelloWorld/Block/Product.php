@@ -26,10 +26,14 @@ class Product extends Template
         $this->_helperData = $helperData;
         parent::__construct($context, $data);
     }
-
+    /*
+    college all product include out of stock
+    use $isOverride to remove the filter in core team 
+    there is a puglin to override Stock
+    */
     public function getProductCollect()
     {
-        // $this->_helperData::$isOverride = true;
+        $this->_helperData::$isOverride = true;
     	$collection = $this->productCollect->create();
 
         $collection->addAttributeToSelect('*')->load();
